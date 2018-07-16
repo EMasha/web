@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory || Management System </title>
+</head>
+
+{% load static %}
+
+    <!-- Bootstrap core CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/css/bootstrap1.min.css' %}"/>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/css/dashboard.css' %}"/>
+    <script type="text/javascript" src="{% static 'charts/js/fusioncharts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'charts/js/fusioncharts.theme.fint.js' %}"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Porcelain Arts</a>
+      {% if user.is_authenticated %}
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
+        </li>
+      </ul>
+      {% endif %}
+    </nav>
+{% if user.is_authenticated %}
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'index' %}">
+                  <span data-feather="home"></span>
+                  Inventari <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                 <a href="{% url 'inventari' %}" class="nav-link"> Inventari</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'furnizimi' %}" class="nav-link"> Furnizimet</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'shitje' %}" class="nav-link"> Shitjet</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'klienti' %}" class="nav-link"> Klientet</a>
+              </li>
+            </ul>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'index' %}">
+                  <span data-feather="home"></span>
+                  Faqa Web <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                 <a href="{% url 'produktet' %}" class="nav-link"> Produktet</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'kategorite' %}" class="nav-link"> Kategorite</a>
+              </li>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">{% block sectiontitle %}{% endblock %}</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">{% block buton %} {% endblock %}</button>
+
+                <button class="btn btn-sm btn-outline-secondary">{% block export %} {% endblock %}Export </a></button>
+              </div>
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This week
+              </button>
+            </div>
+          </div>
+
+         <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas>-->
+
+            <div class="table-responsive">
+              {% block content %}
+
+              {% endblock %}
+            </div>
+            {% else %}
+          <div style="text-align: center">
+             <img style="text-align: center" class="mb-4" src="{% static 'img/logovogel.png' %}" alt="" width="72" height="72">
+              <h2 style="text-align: center"><a href="{% url 'login' %}">Please Login</a></h2>
+          </div>
+
+          {% endif %}
+        </main>
+      </div>
+    </div>
+
+
+
+  </body>
+
+</html>

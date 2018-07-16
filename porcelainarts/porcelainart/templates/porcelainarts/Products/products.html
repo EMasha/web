@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcelain-Arts</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+	<style>
+		.navbar-nav li:hover > ul.dropdown-menu {
+			display: inline-flex;
+		}
+		.dropdown-submenu {
+			position:relative;
+		}
+	</style>
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a href="#">Albanian </a><a href="#">English </a>
+            <form class="navbar-form navbar-left" role="search" method="GET" action="{% url 'porcelainarts:search-results'  %}">
+                <div class="form-group" >
+                    <input type="text" class="input-sm form-control" id = "search" name="search" placeholder="Kërko produktin">
+                </div>
+                <button type="submit"  class="btn btn-default btn-sm hidden-xs glyphicon glyphicon-search" id = "submit"></button>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="djathas"><a href="#">Map </a><a>|</a><a href="#">Wish List</a></div>
+    </div>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#"><img class="img-responsive" src="{% static 'img/logo.png' %}" alt="Porcelain-Arts" width="90" height="38" style="margin-top: -15px;padding-top: 10px;"></img></a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active" role="presentation"><a href="#">Home </a></li>
+                    <li role="presentation"><a href="#">About Us</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Produktet <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li class="dropdown-submenu">
+                                <li href="#">
+                                    {% block category %} {% endblock%}
+                                </li>
+
+							</li>
+
+                        </ul>
+                    </li>
+                    <li role="presentation"><a href="#" data-toggle="modal" data-target="#exampleModal">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	<div class="modal fade" id="exampleModal"role="dialog" tabindex="-1">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title">Modal Title</h4></div>
+				<div class="modal-body">
+					<p>The content of your modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+					<button class="btn btn-primary" type="submit">Send</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="carousel slide" data-ride="carousel" id="carousel-1">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active"><img src="{% static 'img/chicago.jpg' %}" alt="Slide Image"></div>
+                <div class="item"><img src="{% static 'img/la.jpg' %}" alt="Slide Image"></div>
+                <div class="item"><img src="{% static 'img/city_bg.jpg' %}" alt="Slide Image"></div>
+                <div class="item"><img src="{% static 'img/ny.jpg' %}" alt="Slide Image"></div>
+            </div>
+            <div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+                <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-1" data-slide-to="1"></li>
+                <li data-target="#carousel-1" data-slide-to="2"></li>
+                <li data-target="#carousel-1" data-slide-to="3"></li>
+            </ol>
+    </div>
+    <section class="testimonials">
+<div class="container">
+
+            <div class="row">
+                <h1 id="title">{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+					{% block content %}
+					{% endblock %}
+
+				</div>
+            </div>
+            {% include 'porcelainarts/Products/paginator.html' with page=products %}
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Fantastic Features</h2>
+                    <p>Morbi non mauris massa. Duis elit mauris, malesuada nec suscipit ac, bibendum sed augue. Maecenas condimentum magna gravida, laoreet nunc sed, euismod sem. </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-cloud"></i>
+                            <p>Cloud-ready </p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-piggy-bank"></i>
+                            <p>Saves You Money</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-fire"></i>
+                            <p>Fire Proof</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row" id="footer-button">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h5 class="text-right">Mobile App © 2016</h5>
+                    <form class="navbar-form navbar-left" role="search" method="GET" action="{% url 'porcelainarts:search-results'  %}">
+                        <div class="form-group" >
+                            <input type="text" class="input-sm form-control" id = "search" name="search" placeholder="Kërko produktin">
+                        </div>
+                        <button type="submit"  class="btn btn-default btn-sm hidden-xs glyphicon glyphicon-search" id = "submit"></button>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 social-icons" id="footer">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#" target="_top" id="top" class="glyphicon glyphicon-arrow-up" style="float: right;"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

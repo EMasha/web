@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+{% for porosi in porosi %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">produkti</th>
+          <th scope="col">pershkrimi</th>
+          <th scope="col">sasia</th>
+          <th scope="col">vlera</th>
+          <th scope="col">cmimi</th>
+          <th scope="col">ulje</th>
+          <th scope="col">klienti</th>
+          <th scope="col">kapar</th>
+          <th scope="col">pershkrimi</th>
+          <th scope="col">dataPorosise</th>
+          <th scope="col">dataPerfundimit</th>
+          <th scope="col">derguar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{porosi.produkti}}</td>
+          <td>{{porosi.pershkrimi}}</td>
+          <td>{{porosi.sasia}}</td>
+          <td>{{porosi.vlera}}</td>
+          <td>{{porosi.cmimi}}</td>
+          <td>{{porosi.ulje}}</td>
+          <td>{{porosi.klienti}}</td>
+          <td>{{porosi.kapar}}</td>
+          <td>{{porosi.pershkrimi}}</td>
+          <td>{{porosi.dataPorosise}}</td>
+          <td>{{porosi.dataPerfundimit}}</td>
+          <td>{{porosi.derguar}}</td>
+        </tr>
+      </tbody>
+    </table>
+{% endfor %}
+
+</body>
+</html>

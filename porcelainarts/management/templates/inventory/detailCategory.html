@@ -1,0 +1,12 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block buton %}
+     <a href="{% url 'editCategory' category.pk %}"> Rregullo</a>
+{% endblock %}
+{% block content %}
+
+    <h1>Informacion i produktit {{category.code}}</h1>
+    <label><h5>Kategoria</h5></label>:  {{ category.name }}</label><br>
+    <label><h5>Slug</h5></label>: {{ category.slug }}</label><br>
+
+{% endblock %}

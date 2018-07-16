@@ -1,0 +1,48 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Inventari</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnew' %}"> + Shto Produkt</a>
+{% endblock %}
+{% block export %}
+    <a href="{% url 'export_inventari_csv' %}">
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th> Kodi</th>
+            <th>Gjendje</th>
+            <th>Cmimi/Njesi</th>
+            <th>Cmimi shitjes</th>
+            <th>Pershkrimi</th>
+            <th>Permasat</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+
+            <tr>
+                <th>
+                    <a href="{% url 'detail' product.pk %}">
+                        {{ product.pk }}
+                    </a>
+                </th>
+                <td>{{ product.kodiI }}</td>
+                <td>{{ product.gjendje }}</td>
+                <td>{{ product.cmimi_per_njesi }}</td>
+                <td>{{ product.cmimi_shitjes }}</td>
+                <td>{{ product.pershkrim }}</td>
+                <td>{{ product.permasat }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+

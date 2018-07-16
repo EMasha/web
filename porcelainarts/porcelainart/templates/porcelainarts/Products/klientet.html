@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for klient in klient %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">emer</th>
+          <th scope="col">mbiemer</th>
+          <th scope="col">nr Tel</th>
+          <th scope="col">email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{klient.emer}}</td>
+          <td>{{klient.mbiemer}}</td>
+          <td>{{klient.nrTel}}</td>
+          <td>{{klient.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+{% endfor %}
+
+</body>
+</html>

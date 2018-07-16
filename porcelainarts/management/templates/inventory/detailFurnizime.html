@@ -1,0 +1,18 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block buton %}
+     <a href="{% url 'editFurnizim' furnizim.pk %}"> Rregullo</a>
+{% endblock %}
+{% block content %}
+
+     <h1>Informacion i furnizimit {{furnizim.kodiF}}</h1>
+     <label><h5>Kodi</h5></label>:  {{ furnizim.kodiF }}</label><br>
+     <label><h5>Data e porosise</h5></label>: {{ furnizim.data_porosise }}</label><br>
+     <label><h5>Cmimi/Njesi</h5></label>: {{ furnizim.cmimi_per_njesi }}</label><br>
+     <label><h5>Sasia</h5></label>: {{ furnizim.sasia }}</label><br>
+     <label><h5>Totali</h5></label>: {{ furnizim.cmimi_total }}</label><br>
+     <label><h5>Pershkrimi</h5></label>: {{ furnizim.pershkrim }}</label><br>
+     <label><h5>Permasat</h5></label>: {{ furnizim.permasat }} cm</label><br>
+
+
+{% endblock %}

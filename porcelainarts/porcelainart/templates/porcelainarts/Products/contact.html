@@ -1,0 +1,80 @@
+{% extends "porcelainarts/base.html" %}
+{% block title %}Contact - {{ block.super }}{% endblock %}
+{% block category %}
+    {% for c in categories %}
+        <li id="droplist" {% if category.slug == c.slug %} class="selected"{% endif %}>
+            <a id="list" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+    {% endfor %}
+
+
+{% endblock %}
+{% block category1 %}
+    {% for c in categories %}
+        <li id="droplist" {% if category.slug == c.slug %} class="selected"{% endif %}>
+            <a id="list" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+    {% endfor %}
+
+
+{% endblock %}
+{% block content %}
+<h1 style="float: center">Na kontaktoni</h1><br>
+<form role="form" action="" method="post" style="width: auto">
+    {% csrf_token %}
+    <!--{{ form.as_p }}-->
+
+    <form action="." method="POST" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Subjekti i Email:</td>
+            <td>{{ form.subject }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ form.from_email }}</td>
+        </tr>
+        <tr>
+            <td>Numri i kontaktit:</td>
+            <td>{{ form.contact_number }}</td>
+        </tr>
+        <tr>
+            <td>Përmbajtje:</td>
+            <td>{{ form.message }}</td>
+        </tr>
+    </table>
+    <input type="submit" style="float: right" value="Dërgo"/>
+    </form>
+    <!--<button type="submit">Submit</button>-->
+</form>
+{% endblock %}
+{% block content1 %}
+<h1 style="float: center">Na kontaktoni</h1><br>
+<form role="form" action="" method="post" style="width: auto">
+    {% csrf_token %}
+    <!--{{ form.as_p }}-->
+
+    <form action="." method="POST" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Subjekti i Email:</td>
+            <td>{{ form.subject }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ form.from_email }}</td>
+        </tr>
+        <tr>
+            <td>Numri i kontaktit:</td>
+            <td>{{ form.contact_number }}</td>
+        </tr>
+        <tr>
+            <td>Përmbajtje:</td>
+            <td>{{ form.message }}</td>
+        </tr>
+    </table>
+    <input type="submit" style="float: left" value="Dërgo"/>
+    </form>
+    <!--<button type="submit">Submit</button>-->
+</form>
+{% endblock %}

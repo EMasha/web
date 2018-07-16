@@ -1,0 +1,19 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block buton %}
+     <a href="{% url 'editProdukt' produkti.pk %}"> Rregullo</a>
+{% endblock %}
+{% block content %}
+
+     <h1>Informacion i produktit {{produkti.code}}</h1>
+     <label><h5>Kategoria</h5></label>:  {{ produkti.category }}</label><br>
+     <label><h5>Emri</h5></label>: {{ produkti.name }}</label><br>
+     <label><h5>Kodi</h5></label>: {{ produkti.code }}</label><br>
+     <label><h5>Slug</h5></label>: {{ produkti.slug }}</label><br>
+     <label><h5>Imazhi</h5></label>: {{ produkti.image }}</label><br>
+     <label><h5>Pershkrimi</h5></label>: {{ produkti.description }}</label><br>
+     <label><h5>Cmimi</h5></label>: {{ produkti.price }}</label><br>
+     <label><h5>Permasat</h5></label>: {{ produkti.size }}</label><br>
+     <label><h5>Gjendje</h5></label>: {{ produkti.aviable }}</label><br>
+
+{% endblock %}

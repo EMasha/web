@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block buton %}
+     <a href="{% url 'editKlient' klient.pk %}"> Rregullo</a>
+{% endblock %}
+{% block content %}
+
+    <h1>Informacion i Klientit</h1>
+    <label><h5>Emri</h5></label>:  {{ klient.emer }}</label><br>
+    <label><h5>Mbiemri</h5></label>: {{ klient.mbiemer }}</label><br>
+    <label><h5>Nr. Kontaktit</h5></label>: {{ klient.nrTel }}</label><br>
+    <label><h5>Email</h5></label>: {{ klient.email }}</label><br>
+
+{% endblock %}

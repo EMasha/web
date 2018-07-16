@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for furnizim in furnizim %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">produkti</th>
+          <th scope="col">pershkrimi</th>
+          <th scope="col">sasia</th>
+          <th scope="col">cmimi blerjes</th>
+          <th scope="col">data furnizimit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{furnizim.produkti}}</td>
+          <td>{{furnizim.pershkrimi}}</td>
+          <td>{{furnizim.sasia}}</td>
+          <td>{{furnizim.cmimiBlerjes}}</td>
+          <td>{{furnizim.dataFurnizimit}}</td>
+        </tr>
+      </tbody>
+    </table>
+{% endfor %}
+
+</body>
+</html>

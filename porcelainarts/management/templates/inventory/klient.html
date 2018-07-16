@@ -1,0 +1,45 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Klientet</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnewKlienti' %}"> + Shto Klient</a>
+{% endblock %}
+{% block export %}
+    <a href="{% url 'export_klientet_csv' %}">
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Emer</th>
+            <th>Mbiemer</th>
+            <th>Nr. Kontakti</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for k in klient %}
+
+            <tr>
+                <th>
+                    <a href="{% url 'detailKlient' k.pk %}">
+                        {{ k.pk }}
+                    </a>
+                </th>
+                <td>{{ k.emer }}</td>
+                <td>{{ k.mbiemer }}</td>
+                <td>{{ k.nrTel }}</td>
+                <td>{{ k.email }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+

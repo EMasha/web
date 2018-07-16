@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for intventar in intventar %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">kodi</th>
+          <th scope="col">pershkrimi</th>
+          <th scope="col">gjendje</th>
+          <th scope="col">cmimi blerjes</th>
+          <th scope="col">cmimi shitjes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{intventar.kodi}}</td>
+          <td>{{intventar.pershkrimi}}</td>
+          <td>{{intventar.gjendje}}</td>
+          <td>{{intventar.cmimiBlerjes}}</td>
+          <td>{{intventar.cmimiShitjes}}</td>
+        </tr>
+      </tbody>
+    </table>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Klientet</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnewProdukt' %}"> + Shto Produkt</a>
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Kategoria</th>
+            <th>Emer</th>
+            <th>Kodi</th>
+            <th>Slug</th>
+            <th>Imazhi</th>
+            <th>Pershkrimi</th>
+            <th>Cmimi</th>
+            <th>Permasat</th>
+            <th>Gjendje</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in produktet %}
+
+            <tr>
+                <th>
+                   <a href="{% url 'detailProdukt' p.pk %}">
+                        {{ p.pk }}
+                    </a>
+                </th>
+                <td>{{ p.category }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.code }}</td>
+                <td>{{ p.slug }}</td>
+                <td>{{ p.image }}</td>
+                <td>{{ p.description }}</td>
+                <td>{{ p.price }}</td>
+                <td>{{ p.size }}</td>
+                <td>{{ p.available }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+

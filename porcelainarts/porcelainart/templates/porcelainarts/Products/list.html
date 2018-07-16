@@ -1,0 +1,58 @@
+{% extends "porcelainarts/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }} {% else %}Products{% endif %}
+{% endblock %}
+{% block category %}
+    {% for c in categories %}
+        <li id="droplist" {% if category.slug == c.slug %} class="selected"{% endif %}>
+            <a id="list" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+    {% endfor %}
+
+
+{% endblock %}
+{% block category1 %}
+    {% for c in categories %}
+        <li id="droplist" {% if category.slug == c.slug %} class="selected"{% endif %}>
+            <a id="list" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+    {% endfor %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+       {% for product in products %}
+            <li id="li_prona_detail">
+                <img class="img-responsive" src="{% if product.image %}{{ product.image.url}}{% else %}{% static 'img/No-image-available.jpg' %}{% endif %}" alt="" style="width:auto; height:auto;"></a>
+                <h4 class="card-title">
+                    <a id="list" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                </h4>
+                <!--<h5 class="card-title">LEK {{product.price}}</h5>-->
+                <p class="card-text">{{ product.code }}.
+                </p><p class="card-text">{{ product.description }}.</p>
+                <!--<small class="text-muted">Available {{ product.stock }}</small>-->
+            </li>
+        {% endfor %}
+
+{% endblock %}
+{% block content1 %}
+       {% for product in products %}
+            <li id="li_prona_detail">
+                <img class="img-responsive" src="{% if product.image %}{{ product.image.url}}{% else %}{% static 'img/No-image-available.jpg' %}{% endif %}" alt="" style="width:auto; height:auto;"></a>
+                <h4 class="card-title">
+                    <a id="list" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                </h4>
+               <!-- <h5 class="card-title">LEK {{product.price}}</h5>-->
+                <p class="card-text">{{ product.description }}.</p>
+                <!--<small class="text-muted">Available {{ product.stock }}</small>-->
+            </li>
+        {% endfor %}
+
+{% endblock %}
+
+

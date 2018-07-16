@@ -1,0 +1,12 @@
+Produkti i porositur:
+{{ subject }}
+
+Email:
+{{ from_email }}
+
+Numri i kontaktit:
+{{ contact_number }}
+
+Kerkesat e vecanta:
+{{ message|safe|striptags }}
+

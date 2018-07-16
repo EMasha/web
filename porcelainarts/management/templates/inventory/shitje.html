@@ -1,0 +1,100 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Shitjet</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnewShitje' %}"> + Shto Shitje</a>
+{% endblock %}
+{% block export %}
+    <a href="{% url 'export_shitjet_csv' %}">
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Kodi</th>
+            <th>Sasia</th>
+            <th>Ulje</th>
+            <th>Cmimi/Njesi</th>
+            <th>Totali</th>
+            <th>Pershkrimi</th>
+            <th>Klienti</th>
+            <th>Kapari</th>
+            <th>Data e porosise</th>
+            <th>Data e dorezimit</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in shitjet %}
+
+            <tr>
+                <th>
+                    <a href="{% url 'detailShitje' s.pk %}">
+                        {{ s.pk }}
+                    </a>
+                </th>
+                <td>{{ s.kodiS }}</td>
+                <td>{{ s.sasia }}</td>
+                <td>{{ s.ulje }}</td>
+                <td>{{ s.cmimi_per_njesi }}</td>
+                <td>{{ s.cmimi_shitjes }}</td>
+                <td>{{ s.pershkrim }}</td>
+                <td>{{ s.klienti }}</td>
+                <td>{{ s.kapari }}</td>
+                <td>{{ s.data_porosise }}</td>
+                <td>{{ s.data_dorezimit }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [{{ s.kodiS }}],
+          datasets: [{
+            data: [{{s.sasia}}],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>-->
+{% endblock %}
+

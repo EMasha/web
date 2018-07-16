@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block buton %}
+     <a href="{% url 'edit' product.pk %}"> Rregullo</a>
+{% endblock %}
+{% block content %}
+    <h1>Informacion i produktit {{product.kodi}}</h1>
+    <label><h5>Kodi</h5></label>:  {{ product.kodiI }} <br>
+    <label><h5>Gjendje</h5></label>: {{ product.gjendje }}<br>
+    <label><h5>Cmimi/Njesi</h5></label>: {{ product.cmimi_per_njesi }}<br>
+    <label><h5>Cmimi shitjes</h5></label>: {{ product.cmimi_shitjes }}<br>
+    <label><h5>Pershkrim</h5>{{ product.pershkrim }}</label></br>
+    <label><h5>Permasat</h5>{{ product.permasat }} cm</label>
+{% endblock %}

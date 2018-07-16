@@ -1,0 +1,50 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Furnizimet</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnewFurnziim' %}"> + Shto Furnizim</a>
+{% endblock %}
+{% block export %}
+    <a href="{% url 'export_furnizim_csv' %}">
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th> Kodi</th>
+            <th>Data e porosise</th>
+            <th>Cmimi/Njesi</th>
+            <th>Sasia</th>
+            <th>Cmimi total</th>
+            <th>Pershkrimi</th>
+            <th>Permasat</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for f in furnizim %}
+
+            <tr>
+                <th>
+                    <a href="{% url 'detailFurnizim' f.pk %}">
+                        {{ f.pk }}
+                    </a>
+                </th>
+                <td>{{ f.kodiF }}</td>
+                <td>{{ f.data_porosise }}</td>
+                <td>{{ f.cmimi_per_njesi }}</td>
+                <td>{{ f.sasia }}</td>
+                <td>{{ f.cmimi_total }}</td>
+                <td>{{ f.pershkrim }}</td>
+                <td>{{ f.permasat }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends 'inventory/base.html' %}
+{% csrf_token %}
+{% block sectiontitle %}
+<h2>Klientet</h2>
+{% endblock %}
+{% block buton %}
+     <a href="{% url 'addnewCategory' %}"> + Shto Kategori</a>
+{% endblock %}
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Kategoria</th>
+            <th>Slug</th>
+
+        </thead>
+        <tbody>
+        {% for c in categorite %}
+
+            <tr>
+                <th>
+                   <a href="{% url 'detailCategory' c.pk %}">
+                        {{ c.pk }}
+                    </a>
+                </th>
+                <td>{{ c.name }}</td>
+                <td>{{ c.slug }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+
